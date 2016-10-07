@@ -1,5 +1,4 @@
 use warnings;
-no warnings(qw);
 use strict;
 
 #Initials
@@ -12,7 +11,7 @@ my %board=(1=>{S=>1,D=>2,T=>3},
 	   6=>{S=>6,D=>12,T=>18},
 	   7=>{S=>7,D=>14,T=>21},
 	   8=>{S=>8,D=>16,T=>24},
-	   9=>{S=>9,D=>18;T=>27},
+	   9=>{S=>9,D=>18,T=>27},
 	   10=>{S=>10,D=>20,T=>30},
 	   11=>{S=>11,D=>22,T=>33},
 	   12=>{S=>12,D=>24,T=>36},
@@ -27,11 +26,13 @@ my %board=(1=>{S=>1,D=>2,T=>3},
 	   BULLS=>{S=>25,D=>50}
     );
 
-my %players=(ID1=>{Name=>,Tickets=>501},
-	     ID2=>{Name=>,Tickets=>501},
-	     ID3=>{Name=>,Tickets=>501},
-	     ID4=>{Name=>,Tickets=>501}
+my %players=(ID1=>{Name=>"Anton",Tickets=>501},
+	     ID2=>{Name=>"Bernd",Tickets=>501},
+	     ID3=>{Name=>"Clemens",Tickets=>501},
+	     ID4=>{Name=>"Detlef",Tickets=>501}
     );
+
+my $welcome_msg="Hallo liebe Dartfreunde. Willkommen beim Dart Wettkampfhelfer.\n";
 
 #Options (tba)
 #Mode1=Double out
@@ -41,6 +42,8 @@ my $nop=my $number_of_players=1; #number of players
 
 
 #Main
+
+print $welcome_msg;
 
 #User input number of players $nop=
 #->initialize players
