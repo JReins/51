@@ -26,12 +26,18 @@ my %board=(1=>{S=>1,D=>2,T=>3},
 	   BULLS=>{S=>25,D=>50,T=>undef}
     );
 
-my %players=(ID1=>{Name=>"Anton",Tickets=>501},
-	     ID2=>{Name=>"Bernd",Tickets=>501},
-	     ID3=>{Name=>"Clemens",Tickets=>501},
-	     ID4=>{Name=>"Detlef",Tickets=>501}
+my %players=("ID1"=>"Anton",
+	     "ID2"=>"Bernd",
+	     "ID3"=>"Clemens",
+	     "ID4"=>"Detlef"
     );
-my @player_IDs=keys %players;
+
+my %scores=("ID1"=>"301",
+	    "ID2"=>"301",
+	    "ID3"=>"301",
+	    "ID4"=>"301"
+    );
+#my @player_IDs=keys %players;
 
 my $welcome_msg="Hallo liebe Dartfreunde. Willkommen beim Dart Wettkampfhelfer.\n";
 my $usr_in="";
@@ -49,7 +55,7 @@ my $nop=my $number_of_players=1; #number of players
 print $welcome_msg;
 initialize_players();
 score_in();
-score_print();
+#score_print();
 ausprobieren();
 
 #User input number of players $nop=
@@ -63,9 +69,15 @@ ausprobieren();
 
 #Initialize Players
 
-sub initialize_players{print "Bennene Spieler $cur_player : \n";
+sub initialize_players{print "Benenne Spieler $cur_player : \n"; #in schleife umschreiben!
 		       $usr_in=<STDIN>;
-		       print "Spieler $cur_player heißt nun $usr_in\n";
+		       $players{'ID1'}=$usr_in;
+		       print "Spieler $cur_player heißt nun $players{'ID1'}\n";
+		       $cur_player=$cur_player+1;
+		       print "Benenne Spieler $cur_player : \n";
+		       $usr_in=<STDIN>;
+		       $players{'ID2'}=$usr_in;
+		       print "Spieler $cur_player heißt nun $players{'ID2'}\n";
 };
 
 sub score_in{print "Gib den 1. Dart von Spieler $cur_player ein:\n"; #TODO: Check einbauen ob score möglich -> hash element $board vgl falls nicht fehler und neu eingeben
@@ -74,19 +86,19 @@ sub score_in{print "Gib den 1. Dart von Spieler $cur_player ein:\n"; #TODO: Chec
 	     print "Gib den 2. Dart von Spieler $cur_player ein:\n";
 	     $usr_in=<STDIN>;
 	     $usr_score=$usr_score+$usr_in;
-	     print "Gib den 3. Dart von Spieler $cur_player ein :\n";
+	     print "Gib den 3. Dart von Spieler $cur_player ein:\n";
 	     $usr_in=<STDIN>;
 	     $usr_score=$usr_score+$usr_in;
-	     print "3 Dart Score von Spieler $cur_player ist $usr_score.\n";
+	     print "3 Dart Score von Spieler $cur_player ist $usr_score\n";
 };
 
-sub score_print{print "Spieler \t Score\n";
-		print "------- \t –––––\n";
-		print "@player_IDs";
-};
+#sub score_print{print "Spieler \t Score\n";
+#		print "------- \t –––––\n";
+#		print "@player_IDs";
+#};
 
-sub ausprobieren{print "^[]10;yellow^G"; #Schriftfarbe
-		 print "^[]11;blue^G"; #Hintergrundfarbe
+sub ausprobieren{#print "^[]10;yellow^G"; #Schriftfarbe
+		 #print "^[]11;blue^G"; #Hintergrundfarbe
 };
 
 #substract score
