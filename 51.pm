@@ -1,10 +1,11 @@
 use warnings;
 use strict;
 
+
 #Initials
 
-my %board=(1=>{S=>1,D=>2,T=>3},
-	   2=>{S=>2,D=>4,T=>6},
+my %board=(1=>{S=>1,D=>2,T=>3}, #bisher nicht relevant, für die  Ausgabe von möglichen Finishes gedacht. Könnte bestimmt auch einfacher
+	   2=>{S=>2,D=>4,T=>6}, #sein. ala alle natürlichen zahlen von 1 - 20 und ihre vielfache mit 2 und 3 sowie 50. 
 	   3=>{S=>3,D=>6,T=>9},
 	   4=>{S=>4,D=>8,T=>12},
 	   5=>{S=>5,D=>10,T=>15},
@@ -26,13 +27,13 @@ my %board=(1=>{S=>1,D=>2,T=>3},
 	   BULLS=>{S=>25,D=>50,T=>undef}
     );
 
-my %players=("ID1"=>"Anton",
+my %players=("ID1"=>"Anton", #soll abhängig von der angabe $nop gefüllt werden
 	     "ID2"=>"Bernd",
 	     "ID3"=>"Clemens",
 	     "ID4"=>"Detlef"
     );
 
-my %scores=("ID1"=>"301",
+my %scores=("ID1"=>"301", #soll abhängig von der angabe $nop gefüllt werden mit dem Wert von $usr_score
 	    "ID2"=>"301",
 	    "ID3"=>"301",
 	    "ID4"=>"301"
@@ -42,19 +43,28 @@ my %scores=("ID1"=>"301",
 my $welcome_msg="Hallo liebe Dartfreunde. Willkommen beim Dart Wettkampfhelfer.\n";
 my $usr_in="";
 my $cur_player=1;
+my @usr_id=keys %players; #stimmt in den listen dann die reihenfolge?
+my @usr_scores=values %scores;
 my $usr_score="";
+my $mode=1; #double out, only implemented mode 4 now!
 
 #Options (tba)
 #Mode1=Double out
 #Mode2=Double out, double in
 #Mode3=Double in
+
 my $nop=my $number_of_players=1; #number of players
 
 #Main
 
 print $welcome_msg;
 initialize_players();
-score_in();
+
+#if schleife für finish yes or no score >=170 für double out
+
+if 
+
+#score_in(); or #finish_score();
 #score_print();
 ausprobieren();
 
@@ -67,9 +77,9 @@ ausprobieren();
 
 #Subs
 
-#Initialize Players
+#Initialize Players and starting Score
 
-sub initialize_players{print "Benenne Spieler $cur_player : \n"; #in schleife umschreiben!
+sub initialize_players{print "Benenne Spieler $cur_player : \n"; #in schleife umschreiben! von Spieler 1 bis $nop in %players ablegen
 		       $usr_in=<STDIN>;
 		       $players{'ID1'}=$usr_in;
 		       print "Spieler $cur_player heißt nun $players{'ID1'}\n";
@@ -78,6 +88,15 @@ sub initialize_players{print "Benenne Spieler $cur_player : \n"; #in schleife um
 		       $usr_in=<STDIN>;
 		       $players{'ID2'}=$usr_in;
 		       print "Spieler $cur_player heißt nun $players{'ID2'}\n";
+
+		       print "Sehr gut!\n";
+		       print "Hallo ihr $nop";
+
+		       print "Player \t Score \n -------- \t --------\n";
+		       
+		       foreach $usr_id(keys %players){print "$players \t $usr_scores\n";
+							 
+		       };
 };
 
 sub score_in{print "Gib den 1. Dart von Spieler $cur_player ein:\n"; #TODO: Check einbauen ob score möglich -> hash element $board vgl falls nicht fehler und neu eingeben
