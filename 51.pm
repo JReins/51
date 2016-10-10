@@ -23,7 +23,7 @@ my %board=(1=>{S=>1,D=>2,T=>3},
 	   18=>{S=>18,D=>36,T=>64},
 	   19=>{S=>19,D=>38,T=>67},
 	   20=>{S=>20,D=>40,T=>60},
-	   BULLS=>{S=>25,D=>50}
+	   BULLS=>{S=>25,D=>50,T=>undef}
     );
 
 my %players=(ID1=>{Name=>"Anton",Tickets=>501},
@@ -31,8 +31,12 @@ my %players=(ID1=>{Name=>"Anton",Tickets=>501},
 	     ID3=>{Name=>"Clemens",Tickets=>501},
 	     ID4=>{Name=>"Detlef",Tickets=>501}
     );
+my @player_IDs=keys %players;
 
 my $welcome_msg="Hallo liebe Dartfreunde. Willkommen beim Dart Wettkampfhelfer.\n";
+my $usr_in="";
+my $cur_player=1;
+my $usr_score="";
 
 #Options (tba)
 #Mode1=Double out
@@ -40,10 +44,13 @@ my $welcome_msg="Hallo liebe Dartfreunde. Willkommen beim Dart Wettkampfhelfer.\
 #Mode3=Double in
 my $nop=my $number_of_players=1; #number of players
 
-
 #Main
 
 print $welcome_msg;
+initialize_players();
+score_in();
+score_print();
+ausprobieren();
 
 #User input number of players $nop=
 #->initialize players
@@ -55,6 +62,32 @@ print $welcome_msg;
 #Subs
 
 #Initialize Players
+
+sub initialize_players{print "Bennene Spieler $cur_player : \n";
+		       $usr_in=<STDIN>;
+		       print "Spieler $cur_player heißt nun $usr_in\n";
+};
+
+sub score_in{print "Gib den 1. Dart von Spieler $cur_player ein:\n"; #TODO: Check einbauen ob score möglich -> hash element $board vgl falls nicht fehler und neu eingeben
+	     $usr_in=<STDIN>;
+	     $usr_score=$usr_in;
+	     print "Gib den 2. Dart von Spieler $cur_player ein:\n";
+	     $usr_in=<STDIN>;
+	     $usr_score=$usr_score+$usr_in;
+	     print "Gib den 3. Dart von Spieler $cur_player ein :\n";
+	     $usr_in=<STDIN>;
+	     $usr_score=$usr_score+$usr_in;
+	     print "3 Dart Score von Spieler $cur_player ist $usr_score.\n";
+};
+
+sub score_print{print "Spieler \t Score\n";
+		print "------- \t –––––\n";
+		print "@player_IDs";
+};
+
+sub ausprobieren{print "^[]10;yellow^G"; #Schriftfarbe
+		 print "^[]11;blue^G"; #Hintergrundfarbe
+};
 
 #substract score
 #User input playerscore my $playerscore=
