@@ -62,7 +62,7 @@ initialize_players();
 
 #if schleife für finish yes or no score >=170 für double out
 
-if 
+#if 
 
 #score_in(); or #finish_score();
 #score_print();
@@ -89,14 +89,20 @@ sub initialize_players{print "Benenne Spieler $cur_player : \n"; #in schleife um
 		       $players{'ID2'}=$usr_in;
 		       print "Spieler $cur_player heißt nun $players{'ID2'}\n";
 
-		       print "Sehr gut!\n";
-		       print "Hallo ihr $nop";
+		       print "Sehr gut! \n";
+		       print "Gebt nun an, von welcher Punktzahl ihr beginnen wollt.";
+		       $usr_in=<STDIN>;
+		       $usr_score=$usr_in;
+		       print "Ihr habt ein $nop Spieler Match mit $usr_score Punkten gewählt.\n Standardmäßig ist DoubleOut mode aktiv.\n";
+
+		       
+		       print "Hallo ihr $nop Spieler \n";
 
 		       print "Player \t Score \n -------- \t --------\n";
 		       
-		       foreach $usr_id(keys %players){print "$players \t $usr_scores\n";
+		      # foreach $usr_id(keys %players){print "$players \t $usr_scores{$usr_id}\n";
 							 
-		       };
+		      
 };
 
 sub score_in{print "Gib den 1. Dart von Spieler $cur_player ein:\n"; #TODO: Check einbauen ob score möglich -> hash element $board vgl falls nicht fehler und neu eingeben
