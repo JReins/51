@@ -46,8 +46,18 @@ print "$A $C $G $T";
 #DNA complement
 
 my $complement = $sequence;
+$complement =~ s/T/a/g;
+$complement =~ s/A/t/g;
+$complement =~ s/C/g/g;
+$complement =~ s/G/c/g;
+$complement =~ s/t/T/g;
+$complement =~ s/a/A/g;
+$complement =~ s/c/C/g;
+$complement =~ s/g/G/g;
+$complement = reverse $complement;
 
-
+print "\n"."DNA complement:"."\n";
+print $complement;
 
 #DNA to RNA
 
