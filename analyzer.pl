@@ -31,7 +31,7 @@ close($handle);
 
 #base counter
 my $A=0;
-$A++ while($sequence =~ m/[A]/g);
+$A++ while($sequence =~ m/[A]/g); #Alternativ: my $A = ($sequence =~ tr/A//);
 my $C=0;
 $C++ while($sequence =~ m/[C]/g);
 my $G=0;
@@ -42,6 +42,13 @@ $T++ while($sequence =~ m/[T]/g);
 
 print "\n"."Counts:"."\n"."A  C  G  T"."\n";
 print "$A $C $G $T";
+
+
+#DNA to RNA
+
+$sequence =~ s/T/U/g;
+print "RNA:"."\n";
+print $sequence;
 
 
 print "\n";
