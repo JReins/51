@@ -29,6 +29,21 @@ while(<$handle>){
 }
 close($handle);
 
+#base counter
+my $A=0;
+$A++ while($sequence =~ m/[A]/g);
+my $C=0;
+$C++ while($sequence =~ m/[C]/g);
+my $G=0;
+$G++ while($sequence =~ m/[G]/g);
+my $T=0;
+$T++ while($sequence =~ m/[T]/g);
+
+
+print "\n"."Counts:"."\n"."A  C  G  T"."\n";
+print "$A $C $G $T";
+
+
 print "\n";
  
 #print <<END;
