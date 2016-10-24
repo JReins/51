@@ -25,9 +25,9 @@ while(<$handle>){
     else{
 	$sequence=$sequence.$_;
     }
-    print $sequence;
 }
 close($handle);
+print "\n"."DNA:"."\n"."$sequence";
 
 #base counter
 my $A=0;
@@ -47,7 +47,7 @@ print "$A $C $G $T";
 #DNA to RNA
 
 $sequence =~ s/T/U/g;
-print "RNA:"."\n";
+print "\n"."RNA:"."\n";
 print $sequence;
 
 
