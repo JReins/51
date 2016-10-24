@@ -43,12 +43,18 @@ $T++ while($sequence =~ m/[T]/g);
 print "\n"."Counts:"."\n"."A  C  G  T"."\n";
 print "$A $C $G $T";
 
+#DNA complement
+
+my $complement = $sequence;
+
+
 
 #DNA to RNA
 
-$sequence =~ s/T/U/g;
+my $rna = $sequence;
+$rna =~ s/T/U/g;
 print "\n"."RNA:"."\n";
-print $sequence;
+print $rna;
 
 
 print "\n";
